@@ -19,6 +19,7 @@ def initConnection(target_IP='127.0.0.1', target_Port=25):
     print(banner)
     return s
 
+
 def vrfyUser(s: socket, user: str):
     '''Send 'VRFY <socket>' to socket s.
         Print the results.
@@ -26,10 +27,10 @@ def vrfyUser(s: socket, user: str):
     # VRFY user
     msg = 'VRFY ' + sys.argv[3] + '\r\n' 
     msg = bytes(msg,'utf-8')
-    print(f'Sending: {msg}')
+    print(f'-->>: {msg}')
     s.send(msg)
     result = s.recv(1024)
-    print(result)
+    printf(f'<<--: {result}')
 
 
 def closeConnection(s: socket):
@@ -37,7 +38,6 @@ def closeConnection(s: socket):
     '''
     # Close the socket
     s.close()
-
 
     
 def main():
@@ -57,10 +57,8 @@ def main():
     s = initConnection(target_IP, int(target_Port))
     with open(sys.argv[3],'r') as f:
         for l in f:
-            print(f'{l} --')
             vrfyUser(s,l)
     closeConnection(s)
-
 
 
 if __name__ == '__main__':
