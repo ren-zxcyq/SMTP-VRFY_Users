@@ -4,7 +4,7 @@ import socket
 import sys
 
 
-def connect(target_IP='127.0.0.1', target_Port=25):
+def initConnection(target_IP='127.0.0.1', target_Port=25):
     '''Connect to the SMTP server and return socket.
     '''
     # Create a socket
@@ -54,7 +54,7 @@ def main():
     target_IP = sys.argv[1]
     target_Port = sys.argv[2]
     filepath = sys.argv[3]
-    s = connect(target_IP, int(target_Port))
+    s = initConnection(target_IP, int(target_Port))
     with open(sys.argv[3],'r') as f:
         for l in f:
             print(f'{l} --')
