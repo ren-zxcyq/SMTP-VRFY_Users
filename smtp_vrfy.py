@@ -32,7 +32,7 @@ def vrfyUser(s: socket, user: str):
     print(result)
 
 
-def closeConnection():
+def closeConnection(s: socket):
     '''Close the connection socket
     '''
     # Close the socket
@@ -59,7 +59,7 @@ def main():
         for l in f:
             print(f'{l} --')
             vrfyUser(s,l)
-    # sys.exit(0)
+    closeConnection(s)
 
 
 
