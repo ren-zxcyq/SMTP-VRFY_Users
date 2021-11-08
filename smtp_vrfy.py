@@ -20,7 +20,7 @@ def initConnection(target_IP='127.0.0.1', target_Port=25):
     return s
 
 def vrfyUser(s: socket, user: str):
-    '''Send 'VRFY <socket>' to socket s.
+    '''Send 'VRFY <user>' to socket s.
         Print the results.
     '''
     # VRFY user
